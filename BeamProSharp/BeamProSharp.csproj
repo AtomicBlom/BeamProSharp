@@ -47,13 +47,19 @@
     <Compile Include="BeamAPI.cs" />
     <Compile Include="BeamException.cs" />
     <Compile Include="BeamHttpClient.cs" />
+    <Compile Include="Converter\AudienceConverter.cs" />
     <Compile Include="Messages\IMessageResponse.cs" />
     <Compile Include="Messages\GetMessage.cs" />
     <Compile Include="JavaScriptContractResolver.cs" />
     <Compile Include="Messages\Channel\ChannelTypes.cs" />
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\PostMessage.cs" />
+    <Compile Include="Messages\Common\Avatar.cs" />
+    <Compile Include="Messages\Common\AvatarMetadata.cs" />
+    <Compile Include="Messages\Common\Channel.cs" />
+    <Compile Include="Messages\Common\Group.cs" />
     <Compile Include="Messages\User\Login.cs" />
+    <Compile Include="Messages\User\UserPreferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
