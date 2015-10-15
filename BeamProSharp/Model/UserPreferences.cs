@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace BinaryVibrance.Beam.API.Messages.User
+namespace BinaryVibrance.Beam.API.Model
 {
 	[PublicAPI]
 	public class UserPreferences

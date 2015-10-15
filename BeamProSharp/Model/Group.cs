@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using JetBrains.Annotations;
 
-namespace BinaryVibrance.Beam.API.Messages.User
+namespace BinaryVibrance.Beam.API.Model
 {
 	[PublicAPI]
 	[DebuggerDisplay("ChannelType Id:{Id}, Name:{Name}")]

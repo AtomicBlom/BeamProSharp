@@ -1,5 +1,6 @@
 using System;
 using BinaryVibrance.Beam.API.Messages.User;
+using BinaryVibrance.Beam.API.Model;
 using Newtonsoft.Json;
 
 namespace BinaryVibrance.Beam.API.Converter

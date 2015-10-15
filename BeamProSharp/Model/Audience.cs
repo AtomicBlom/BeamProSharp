@@ -2,7 +2,7 @@ using BinaryVibrance.Beam.API.Converter;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace BinaryVibrance.Beam.API.Messages.User
+namespace BinaryVibrance.Beam.API.Model
 {
 	[PublicAPI]
 	[JsonConverter(typeof (AudienceConverter))]

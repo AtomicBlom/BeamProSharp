@@ -22,10 +22,4 @@ namespace BinaryVibrance.Beam.API.Messages.User
 
 		protected override string Uri => "users/login";
 	}
-
-	[PublicAPI]
-	public class LoginResponse : Common.User, IMessageResponse<LoginRequest>
-	{
-		
-	}
 }

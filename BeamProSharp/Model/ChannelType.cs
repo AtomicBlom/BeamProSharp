@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace BinaryVibrance.Beam.API.Messages.Channel
+namespace BinaryVibrance.Beam.API.Model
 {
 	[PublicAPI]
 	[DebuggerDisplay("ChannelType Id:{Id}, Name:{Name}")]

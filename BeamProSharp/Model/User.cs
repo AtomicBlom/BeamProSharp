@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using BinaryVibrance.Beam.API.Messages.User;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace BinaryVibrance.Beam.API.Messages.Common
+namespace BinaryVibrance.Beam.API.Model
 {
 	[PublicAPI]
 	[DebuggerDisplay("ChannelType Id:{Id}, Name:{Username}")]
@@ -16,7 +15,7 @@ namespace BinaryVibrance.Beam.API.Messages.Common
 
 		public string Bio { get; private set; }
 
-		public Messages.User.Channel Channel { get; private set; }
+		public Channel Channel { get; private set; }
 
 		[JsonProperty("createdAt")]
 		public DateTime Created { get; private set; }

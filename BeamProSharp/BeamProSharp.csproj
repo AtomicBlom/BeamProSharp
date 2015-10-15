@@ -38,7 +38,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
@@ -48,23 +47,25 @@
     <Compile Include="BeamException.cs" />
     <Compile Include="BeamHttpClient.cs" />
     <Compile Include="Converter\AudienceConverter.cs" />
-    <Compile Include="Messages\Common\ChannelType.cs" />
-    <Compile Include="Messages\Common\Audience.cs" />
-    <Compile Include="Properties\Jetbrains.Annotations.cs" />
+    <Compile Include="Messages\Channel\ChannelTypesResponse.cs" />
+    <Compile Include="Messages\User\LoginResponse.cs" />
+    <Compile Include="Model\ChannelType.cs" />
+    <Compile Include="Model\Audience.cs" />
     <Compile Include="Messages\IMessageResponse.cs" />
     <Compile Include="Messages\GetMessage.cs" />
     <Compile Include="JavaScriptContractResolver.cs" />
-    <Compile Include="Messages\Channel\ChannelTypes.cs" />
+    <Compile Include="Messages\Channel\ChannelTypesRequest.cs" />
     <Compile Include="Messages\Message.cs" />
     <Compile Include="Messages\PostMessage.cs" />
-    <Compile Include="Messages\Common\Avatar.cs" />
-    <Compile Include="Messages\Common\AvatarMetadata.cs" />
-    <Compile Include="Messages\Common\Channel.cs" />
-    <Compile Include="Messages\Common\Group.cs" />
-    <Compile Include="Messages\User\Login.cs" />
-    <Compile Include="Messages\Common\UserPreferences.cs" />
-    <Compile Include="Messages\Common\User.cs" />
+    <Compile Include="Model\Avatar.cs" />
+    <Compile Include="Model\AvatarMetadata.cs" />
+    <Compile Include="Model\Channel.cs" />
+    <Compile Include="Model\Group.cs" />
+    <Compile Include="Messages\User\LoginRequest.cs" />
+    <Compile Include="Model\UserPreferences.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Jetbrains.Annotations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
