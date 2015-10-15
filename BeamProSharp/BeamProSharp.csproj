@@ -48,6 +48,9 @@
     <Compile Include="BeamException.cs" />
     <Compile Include="BeamHttpClient.cs" />
     <Compile Include="Converter\AudienceConverter.cs" />
+    <Compile Include="Messages\Common\ChannelType.cs" />
+    <Compile Include="Messages\Common\Audience.cs" />
+    <Compile Include="Properties\Jetbrains.Annotations.cs" />
     <Compile Include="Messages\IMessageResponse.cs" />
     <Compile Include="Messages\GetMessage.cs" />
     <Compile Include="JavaScriptContractResolver.cs" />
@@ -59,7 +62,8 @@
     <Compile Include="Messages\Common\Channel.cs" />
     <Compile Include="Messages\Common\Group.cs" />
     <Compile Include="Messages\User\Login.cs" />
-    <Compile Include="Messages\User\UserPreferences.cs" />
+    <Compile Include="Messages\Common\UserPreferences.cs" />
+    <Compile Include="Messages\Common\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
