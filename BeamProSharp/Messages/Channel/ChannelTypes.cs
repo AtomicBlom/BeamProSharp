@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace BinaryVibrance.Beam.API.Messages.Channel
 {
-
 	public class ChannelTypesRequest : GetMessage
 	{
 		protected override string Uri => "types";
@@ -16,10 +11,9 @@ namespace BinaryVibrance.Beam.API.Messages.Channel
 		public string Query { get; set; }
 	}
 
-	
+
 	public class ChannelTypesResponse : List<ChannelType>, IMessageResponse<ChannelTypesRequest>
 	{
-		
 	}
 
 	[DebuggerDisplay("ChanntelType Id:{Id}, Name:{Name}")]

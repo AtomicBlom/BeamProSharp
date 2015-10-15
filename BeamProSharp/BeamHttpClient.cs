@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using BinaryVibrance.Beam.API.Messages;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using Ninject.Infrastructure.Language;
 
 namespace BinaryVibrance.Beam.API
 {
@@ -22,11 +19,13 @@ namespace BinaryVibrance.Beam.API
 
 		public BeamHttpClient()
 		{
-			_client = new HttpClient();
-			_client.BaseAddress = BeamAPI.BasePath;
+			_client = new HttpClient
+			{
+				BaseAddress = BeamAPI.BasePath
+			};
 
 			_traceWriter = new MemoryTraceWriter();
-			_settings = new JsonSerializerSettings()
+			_settings = new JsonSerializerSettings
 			{
 				TraceWriter = _traceWriter,
 				MissingMemberHandling = MissingMemberHandling.Ignore,
@@ -35,25 +34,15 @@ namespace BinaryVibrance.Beam.API
 			};
 		}
 
-		public async Task<TResponse> Get<TGetRequest, TResponse>(TGetRequest message) where TGetRequest : GetMessage
+		public async Task<TResponse> Get<TGetRequest, TResponse>(TGetRequest message)
+			where TGetRequest : GetMessage
 			where TResponse : IMessageResponse<TGetRequest>
 		{
 			try
 			{
 				var messageUri = GetMessageUri(message);
-
 				var response = await _client.GetAsync(messageUri);
-				var responseContent = await response.Content.ReadAsStringAsync();
-				Console.WriteLine(responseContent);
-
-				switch (response.StatusCode)
-				{
-					case HttpStatusCode.OK:
-						
-						return JsonConvert.DeserializeObject<TResponse>(responseContent, _settings);
-					default:
-						throw new BeamException($"Unknown Status Code: {response.StatusCode}");
-				}
+				return await DeserializeResponse<TResponse>(response);
 			}
 			finally
 			{
@@ -61,7 +50,8 @@ namespace BinaryVibrance.Beam.API
 			}
 		}
 
-		public async Task<TResponse> Post<TPostRequest, TResponse>(TPostRequest message) where TPostRequest : PostMessage
+		public async Task<TResponse> Post<TPostRequest, TResponse>(TPostRequest message)
+			where TPostRequest : PostMessage
 			where TResponse : IMessageResponse<TPostRequest>
 		{
 			ITraceWriter traceWriter = new MemoryTraceWriter();
@@ -70,7 +60,7 @@ namespace BinaryVibrance.Beam.API
 			{
 				var messageUri = message.GetUri();
 				var response = await _client.PostAsync(messageUri, PostMessageBody(message));
-				
+
 				return await DeserializeResponse<TResponse>(response);
 			}
 			finally
@@ -96,10 +86,10 @@ namespace BinaryVibrance.Beam.API
 
 		private string GetMessageUri(Message message)
 		{
-			StringBuilder uri = new StringBuilder();
+			var uri = new StringBuilder();
 			uri.Append(message.GetUri());
 
-			bool firstMember = true;
+			var firstMember = true;
 			foreach (var parameter in GetObjectValues(message))
 			{
 				uri.Append(firstMember ? '?' : '&');
@@ -115,7 +105,7 @@ namespace BinaryVibrance.Beam.API
 
 		private MultipartFormDataContent PostMessageBody(Message message)
 		{
-			MultipartFormDataContent request = new MultipartFormDataContent();
+			var request = new MultipartFormDataContent();
 
 			foreach (var parameter in GetObjectValues(message))
 			{
@@ -138,7 +128,6 @@ namespace BinaryVibrance.Beam.API
 					var name = memberInfo.Name;
 					name = name[0].ToString().ToLowerInvariant() + name.Substring(1);
 					yield return new KeyValuePair<string, string>(name, memberValue);
-					
 				}
 			}
 		}

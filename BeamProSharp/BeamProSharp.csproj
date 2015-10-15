@@ -47,10 +47,12 @@
     <Compile Include="BeamAPI.cs" />
     <Compile Include="BeamException.cs" />
     <Compile Include="BeamHttpClient.cs" />
-    <Compile Include="IMessageResponse.cs" />
-    <Compile Include="IGetMessage.cs" />
+    <Compile Include="Messages\IMessageResponse.cs" />
+    <Compile Include="Messages\GetMessage.cs" />
     <Compile Include="JavaScriptContractResolver.cs" />
     <Compile Include="Messages\Channel\ChannelTypes.cs" />
+    <Compile Include="Messages\Message.cs" />
+    <Compile Include="Messages\PostMessage.cs" />
     <Compile Include="Messages\User\Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

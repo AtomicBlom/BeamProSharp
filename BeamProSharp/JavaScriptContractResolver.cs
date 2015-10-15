@@ -13,7 +13,6 @@ namespace BinaryVibrance.Beam.API
 
 			if (!prop.Writable)
 			{
-
 				var property = member as PropertyInfo;
 				if (property != null)
 				{

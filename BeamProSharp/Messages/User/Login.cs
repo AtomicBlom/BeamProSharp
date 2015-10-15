@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace BinaryVibrance.Beam.API.Messages.User
 {
 	public class LoginRequest : PostMessage
 	{
-		public string TwoFactorAuthenticationCode { get; set; }
-		public string Username { get; }
-		public string Password { get; }
-
 		public LoginRequest(string username, string password)
 		{
 			Username = username;
@@ -25,7 +17,14 @@ namespace BinaryVibrance.Beam.API.Messages.User
 			TwoFactorAuthenticationCode = twoFactorAuthenticationCode;
 		}
 
-		protected override string Uri { get { return "users/login"; } }
+		public string TwoFactorAuthenticationCode { get; set; }
+		public string Username { get; }
+		public string Password { get; }
+
+		protected override string Uri
+		{
+			get { return "users/login"; }
+		}
 	}
 
 	public class LoginResponse : IMessageResponse<LoginRequest>
