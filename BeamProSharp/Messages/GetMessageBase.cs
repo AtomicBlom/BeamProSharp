@@ -1,6 +1,6 @@
 namespace BinaryVibrance.Beam.API.Messages
 {
-	public abstract class PostMessage : Message
+	public abstract class GetMessageBase : MessageBase
 	{
 	}
 }

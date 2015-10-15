@@ -3,7 +3,7 @@
 namespace BinaryVibrance.Beam.API.Messages.User
 {
 	[PublicAPI]
-	public class LoginRequest : PostMessage
+	public class LoginRequest : PostMessageBase
 	{
 		public LoginRequest(string username, string password)
 		{

@@ -52,11 +52,11 @@
     <Compile Include="Model\ChannelType.cs" />
     <Compile Include="Model\Audience.cs" />
     <Compile Include="Messages\IMessageResponse.cs" />
-    <Compile Include="Messages\GetMessage.cs" />
+    <Compile Include="Messages\GetMessageBase.cs" />
     <Compile Include="JavaScriptContractResolver.cs" />
     <Compile Include="Messages\Channel\ChannelTypesRequest.cs" />
-    <Compile Include="Messages\Message.cs" />
-    <Compile Include="Messages\PostMessage.cs" />
+    <Compile Include="Messages\MessageBase.cs" />
+    <Compile Include="Messages\PostMessageBase.cs" />
     <Compile Include="Model\Avatar.cs" />
     <Compile Include="Model\AvatarMetadata.cs" />
     <Compile Include="Model\Channel.cs" />

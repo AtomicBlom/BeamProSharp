@@ -3,7 +3,7 @@
 namespace BinaryVibrance.Beam.API.Messages.Channel
 {
 	[PublicAPI]
-	public class ChannelTypesRequest : GetMessage
+	public class ChannelTypesRequest : GetMessageBase
 	{
 		protected override string Uri => "types";
 

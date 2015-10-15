@@ -1,6 +1,6 @@
 namespace BinaryVibrance.Beam.API.Messages
 {
-	public abstract class Message
+	public abstract class MessageBase
 	{
 		protected abstract string Uri { get; }
 

@@ -35,7 +35,7 @@ namespace BinaryVibrance.Beam.API
 		}
 
 		public async Task<TResponse> Get<TGetRequest, TResponse>(TGetRequest message)
-			where TGetRequest : GetMessage
+			where TGetRequest : GetMessageBase
 			where TResponse : IMessageResponse<TGetRequest>
 		{
 			try
@@ -51,7 +51,7 @@ namespace BinaryVibrance.Beam.API
 		}
 
 		public async Task<TResponse> Post<TPostRequest, TResponse>(TPostRequest message)
-			where TPostRequest : PostMessage
+			where TPostRequest : PostMessageBase
 			where TResponse : IMessageResponse<TPostRequest>
 		{
 			ITraceWriter traceWriter = new MemoryTraceWriter();
@@ -84,7 +84,7 @@ namespace BinaryVibrance.Beam.API
 			}
 		}
 
-		private string GetMessageUri(Message message)
+		private string GetMessageUri(MessageBase message)
 		{
 			var uri = new StringBuilder();
 			uri.Append(message.GetUri());
@@ -103,7 +103,7 @@ namespace BinaryVibrance.Beam.API
 			return uri.ToString();
 		}
 
-		private MultipartFormDataContent PostMessageBody(Message message)
+		private MultipartFormDataContent PostMessageBody(MessageBase message)
 		{
 			var request = new MultipartFormDataContent();
 
@@ -115,7 +115,7 @@ namespace BinaryVibrance.Beam.API
 			return request;
 		}
 
-		private static IEnumerable<KeyValuePair<string, string>> GetObjectValues(Message message)
+		private static IEnumerable<KeyValuePair<string, string>> GetObjectValues(MessageBase message)
 		{
 			foreach (
 				var memberInfo in
