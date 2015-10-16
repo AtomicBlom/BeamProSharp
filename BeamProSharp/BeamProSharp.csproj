@@ -48,6 +48,13 @@
     <Compile Include="BeamHttpClient.cs" />
     <Compile Include="Converter\AudienceConverter.cs" />
     <Compile Include="Messages\Channel\ChannelTypesResponse.cs" />
+    <Compile Include="Messages\DeleteMessageBase.cs" />
+    <Compile Include="Messages\User\ChangeAvatarRequest.cs" />
+    <Compile Include="Messages\User\ChangeAvatarResponse.cs" />
+    <Compile Include="Messages\User\CurrentUserResponse.cs" />
+    <Compile Include="Messages\User\CurrentUserRequest.cs" />
+    <Compile Include="Messages\User\LogoutReponse.cs" />
+    <Compile Include="Messages\User\LogoutRequest.cs" />
     <Compile Include="Messages\User\LoginResponse.cs" />
     <Compile Include="Model\ChannelType.cs" />
     <Compile Include="Model\Audience.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -42,6 +43,22 @@ namespace BinaryVibrance.Beam.API
 			{
 				var messageUri = GetMessageUri(message);
 				var response = await _client.GetAsync(messageUri);
+				return await DeserializeResponse<TResponse>(response);
+			}
+			finally
+			{
+				Console.WriteLine(_traceWriter);
+			}
+		}
+
+		public async Task<TResponse> Delete<TGetRequest, TResponse>(TGetRequest message)
+			where TGetRequest : GetMessageBase
+			where TResponse : IMessageResponse<TGetRequest>
+		{
+			try
+			{
+				var messageUri = GetMessageUri(message);
+				var response = await _client.DeleteAsync(messageUri);
 				return await DeserializeResponse<TResponse>(response);
 			}
 			finally
@@ -117,15 +134,19 @@ namespace BinaryVibrance.Beam.API
 
 		private static IEnumerable<KeyValuePair<string, string>> GetObjectValues(MessageBase message)
 		{
-			foreach (
-				var memberInfo in
-					message.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty))
+			var properties =
+				from property in
+					message.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty)
+				where property.GetCustomAttribute<JsonIgnoreAttribute>() == null
+				select property;
+
+			foreach (var propertyInfo in properties)
 			{
-				var memberValue = memberInfo?.GetMethod.Invoke(message, null)?.ToString();
+				var memberValue = propertyInfo.GetMethod.Invoke(message, null)?.ToString();
 
 				if (!string.IsNullOrEmpty(memberValue))
 				{
-					var name = memberInfo.Name;
+					var name = propertyInfo.Name;
 					name = name[0].ToString().ToLowerInvariant() + name.Substring(1);
 					yield return new KeyValuePair<string, string>(name, memberValue);
 				}

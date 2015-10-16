@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace BinaryVibrance.Beam.API.Model
 {
 	[PublicAPI]
-	[DebuggerDisplay("ChannelType Id:{Id}, Name:{Username}")]
+	[DebuggerDisplay("User Id:{Id}, Name:{Username}")]
 	public class User
 	{
 		[JsonProperty("avatars")]
