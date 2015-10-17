@@ -22,7 +22,7 @@ namespace BinaryVibrance.Beam.API
 		{
 			_client = new HttpClient
 			{
-				BaseAddress = BeamAPI.BasePath
+				BaseAddress = Beam.BasePath
 			};
 
 			_traceWriter = new MemoryTraceWriter();
@@ -51,9 +51,9 @@ namespace BinaryVibrance.Beam.API
 			}
 		}
 
-		public async Task<TResponse> Delete<TGetRequest, TResponse>(TGetRequest message)
-			where TGetRequest : GetMessageBase
-			where TResponse : IMessageResponse<TGetRequest>
+		public async Task<TResponse> Delete<TDeleteRequest, TResponse>(TDeleteRequest message)
+			where TDeleteRequest : GetMessageBase
+			where TResponse : IMessageResponse<TDeleteRequest>
 		{
 			try
 			{

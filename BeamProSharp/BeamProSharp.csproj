@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BeamAPI.cs" />
+    <Compile Include="Beam.cs" />
     <Compile Include="BeamException.cs" />
-    <Compile Include="BeamHttpClient.cs" />
+    <Compile Include="Services\BeamHttpClient.cs" />
     <Compile Include="Converter\AudienceConverter.cs" />
     <Compile Include="Messages\Channel\ChannelTypesResponse.cs" />
     <Compile Include="Messages\DeleteMessageBase.cs" />
@@ -60,7 +60,7 @@
     <Compile Include="Model\Audience.cs" />
     <Compile Include="Messages\IMessageResponse.cs" />
     <Compile Include="Messages\GetMessageBase.cs" />
-    <Compile Include="JavaScriptContractResolver.cs" />
+    <Compile Include="Converter\JavaScriptContractResolver.cs" />
     <Compile Include="Messages\Channel\ChannelTypesRequest.cs" />
     <Compile Include="Messages\MessageBase.cs" />
     <Compile Include="Messages\PostMessageBase.cs" />
@@ -77,9 +77,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
