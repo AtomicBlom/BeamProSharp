@@ -44,7 +44,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Beam.cs" />
+    <Compile Include="BeamUserNotFoundException.cs" />
+    <Compile Include="ILogFacade.cs" />
+    <Compile Include="Messages\Channel\FindChannelByIdRequest.cs" />
+    <Compile Include="Messages\Channel\FindChannelByIdResponse.cs" />
+    <Compile Include="Messages\User\BeamFindUsersRequestTooShortException.cs" />
+    <Compile Include="Messages\BeamInvalidLimitException.cs" />
+    <Compile Include="Messages\BeamInvalidPageNumberException.cs" />
+    <Compile Include="Messages\User\FindUserByIdRequest.cs" />
+    <Compile Include="Messages\User\FindUserByIdResponse.cs" />
+    <Compile Include="Messages\User\FindUsersByPartialNameRequest.cs" />
+    <Compile Include="Messages\User\FindUsersByPartialNameResponse.cs" />
+    <Compile Include="Model\UserSearchResult.cs" />
+    <Compile Include="Services\Chat\BeamChatAPI.cs" />
     <Compile Include="BeamException.cs" />
+    <Compile Include="Services\Chat\JoinRequest.cs" />
     <Compile Include="Services\BeamHttpClient.cs" />
     <Compile Include="Converter\AudienceConverter.cs" />
     <Compile Include="Messages\Channel\ChannelTypesResponse.cs" />
@@ -73,11 +87,16 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Jetbrains.Annotations.cs" />
+    <Compile Include="Services\Chat\ChatExtension.cs" />
+    <Compile Include="Services\ConsoleLogger.cs" />
+    <Compile Include="Services\NullLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Messages\Chat\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

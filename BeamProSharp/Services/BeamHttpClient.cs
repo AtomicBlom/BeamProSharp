@@ -47,7 +47,7 @@ namespace BinaryVibrance.Beam.API
 			}
 			finally
 			{
-				Console.WriteLine(_traceWriter);
+				Beam.Logger.Trace(_traceWriter.ToString());
 			}
 		}
 
@@ -63,7 +63,7 @@ namespace BinaryVibrance.Beam.API
 			}
 			finally
 			{
-				Console.WriteLine(_traceWriter);
+				Beam.Logger.Trace(_traceWriter.ToString());
 			}
 		}
 
@@ -71,8 +71,6 @@ namespace BinaryVibrance.Beam.API
 			where TPostRequest : PostMessageBase
 			where TResponse : IMessageResponse<TPostRequest>
 		{
-			ITraceWriter traceWriter = new MemoryTraceWriter();
-
 			try
 			{
 				var messageUri = message.GetUri();
@@ -82,14 +80,14 @@ namespace BinaryVibrance.Beam.API
 			}
 			finally
 			{
-				Console.WriteLine(traceWriter);
+				Beam.Logger.Trace(_traceWriter.ToString());
 			}
 		}
 
 		private async Task<TResponse> DeserializeResponse<TResponse>(HttpResponseMessage response)
 		{
 			var responseContent = await response.Content.ReadAsStringAsync();
-			Console.WriteLine(responseContent);
+			Beam.Logger.Trace(responseContent);
 
 			switch (response.StatusCode)
 			{
@@ -147,6 +145,11 @@ namespace BinaryVibrance.Beam.API
 				if (!string.IsNullOrEmpty(memberValue))
 				{
 					var name = propertyInfo.Name;
+					var jsonProperty = propertyInfo.GetCustomAttribute<JsonPropertyAttribute>();
+					if (jsonProperty != null)
+					{
+						name = jsonProperty.PropertyName;
+					}
 					name = name[0].ToString().ToLowerInvariant() + name.Substring(1);
 					yield return new KeyValuePair<string, string>(name, memberValue);
 				}
